@@ -1,4 +1,5 @@
 using ApiPeliculas.Data;
+using ApiPeliculas.PeliculasMapper;
 using ApiPeliculas.Repository;
 using ApiPeliculas.Repository.IRepository;
 using Microsoft.AspNetCore.Builder;
@@ -34,6 +35,9 @@ namespace ApiPeliculas
 
             //servicios
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+
+            services.AddAutoMapper(typeof(PeliculasMappers));
+
             services.AddControllers();
         }
 
