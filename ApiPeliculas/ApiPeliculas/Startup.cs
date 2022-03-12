@@ -1,4 +1,6 @@
 using ApiPeliculas.Data;
+using ApiPeliculas.Repository;
+using ApiPeliculas.Repository.IRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +31,9 @@ namespace ApiPeliculas
         {
             services.AddDbContext<ApplicationDbContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+
+            //servicios
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddControllers();
         }
 
