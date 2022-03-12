@@ -20,42 +20,49 @@ namespace ApiPeliculas.Repository
 
         public bool ActualizarCategoria(Categoria categoria)
         {
-            throw new NotImplementedException();
+            _baseDeDatos.Categorias.Update(categoria);
+            return Guardar();
         }
 
         public bool BorrarCategoria(Categoria categoria)
         {
-            throw new NotImplementedException();
+            _baseDeDatos.Categorias.Remove(categoria);
+            return Guardar();
         }
 
         public bool CrearCategoria(Categoria categoria)
         {
-            throw new NotImplementedException();
+            _baseDeDatos.Categorias.Add(categoria);
+            return Guardar();
         }
 
         public bool ExisteCategoria(string nombre)
         {
-            throw new NotImplementedException();
+            bool valor = _baseDeDatos.Categorias
+                        .Any(c => c.Nombre.ToLower().Trim() == nombre.ToLower().Trim());
+
+            return valor;
         }
 
         public bool ExisteCategoria(int categoriaId)
         {
-            throw new NotImplementedException();
+            return _baseDeDatos.Categorias
+                        .Any(c => c.Id == categoriaId);            
         }
 
         public Categoria GetCategoria(int categoriaId)
         {
-            throw new NotImplementedException();
+            return _baseDeDatos.Categorias.FirstOrDefault(c => c.Id == categoriaId);
         }
 
         public ICollection<Categoria> GetCategorias()
         {
-            throw new NotImplementedException();
+            return _baseDeDatos.Categorias.OrderBy(c => c.Nombre).ToList();
         }
 
         public bool Guardar()
         {
-            throw new NotImplementedException();
+            return _baseDeDatos.SaveChanges() >= 0 ? true : false;
         }
     }
 }
