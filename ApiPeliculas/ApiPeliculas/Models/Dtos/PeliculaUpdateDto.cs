@@ -12,8 +12,7 @@ namespace ApiPeliculas.Models.Dtos
         public int Id { get; set; }
 
         [Required(ErrorMessage = "El nombre es obligatorio.")]
-        public string Nombre { get; set; }
-        [Required(ErrorMessage = "La RutaImagen es obligatoria.")]
+        public string Nombre { get; set; }        
         public string RutaImagen { get; set; }        
         [Required(ErrorMessage = "La Descripcion es obligatoria.")]
         public string Descripcion { get; set; }

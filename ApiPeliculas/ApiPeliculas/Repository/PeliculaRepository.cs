@@ -37,7 +37,7 @@ namespace ApiPeliculas.Repository
 
             if (!string.IsNullOrEmpty(nombre))
             {
-                query = query.Where(p => p.Nombre.Contains(nombre) || p.Descripcion.Contains(nombre)));
+                query = query.Where(p => p.Nombre.Contains(nombre) || p.Descripcion.Contains(nombre));
             }
 
             return query.ToList();
@@ -45,7 +45,8 @@ namespace ApiPeliculas.Repository
 
         public bool CrearPelicula(Pelicula pelicula)
         {
-            throw new NotImplementedException();
+            _baseDeDatos.Peliculas.Add(pelicula);
+            return Guardar();
         }
 
         public bool ExistePelicula(string nombre)
